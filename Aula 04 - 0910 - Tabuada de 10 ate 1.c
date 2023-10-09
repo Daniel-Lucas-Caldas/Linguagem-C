@@ -6,7 +6,6 @@
 int main() {
     setlocale(LC_ALL, "portuguese");
     int i,j;
-
   
   printf ("Tabuada de 10 \n");
     for (i = 1; i <= 10; i++) {
