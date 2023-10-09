@@ -5,41 +5,53 @@
 
 int main() {
     setlocale(LC_ALL, "portuguese");
-    int valor, parcela, opcao, resultado;
+    int opcao, desconto, parcelas;
+    float valorProduto, precoFinal, valorPorParcela; 
+    
+    // Requisitando dados do usúario
+    printf("Digite o valor do produto: \n ");
+    scanf("%f",&valorProduto);
 
-    printf("Digite o valor do produto: ");
-    scanf("%i",&valor);
-
-    fflush(stdin);
-
-    printf("Digite a forma de pagamento: 1 - A vista ou 2 - a prazo: ");
-    scanf("%i",&opcao);
+    printf("Escolha uma das opções abaixo: \n");
+    printf("1 - para pagamento a vista. \n");
+    printf("2 - para pagamento  prazo. \n ");
+    printf("Digite a opção desejada: ");
+    scanf("%d",&opcao);
 
     switch (opcao) {
         case 1 : 
-           resultado = valor - 90/100;
+           desconto = valorProduto * 0.1;
+           precoFinal = valorProduto - desconto;
+
+           printf("Valor do produto: R$ %.2f \n", valorProduto);
+           printf("Forma de pagamento: a vista \n");
+           printf("Valor do desconto: R$ %.2f \n", desconto);
+           printf("Total a pagar: R$ %.2f \n", precoFinal);
            break;
+
         case 2 : 
+          do {
            printf("Digite a quatidade de parcelas que deseja pagar: ");
-           scanf("%f", &parcela);
-           resultado = valor / parcela;
+           scanf("%d", &parcelas);
+
+           if (parcelas > 6 ) {
+              printf("\nO parcelamento pode ser feito em até 6 parcelas \n");
+              printf("Tente novamente... \n\n");
+           }
+          } while (parcelas > 6);
+
+           valorPorParcela = valorProduto / parcelas; 
+           precoFinal = valorProduto - desconto;
+
+           printf("Valor do produto: R$ %.2f \n", valorProduto);
+           printf("Forma de pagamento: a prazo \n");
+           printf("Quantidade de pagamento: %d \n", parcelas);
+           printf("Valor por parcela: R$ %.2f \n", valorPorParcela);
+           printf("Total a pagar: R$ %.2f \n", precoFinal);
            break;
     default:
            printf("Opção invalida!");
         break;
-    }
-
-    if (opcao = 1) {
-        printf("Valor do produto: R$ %i \n", valor);
-        printf("Forma de pagamento: %i \n", opcao);
-        printf("Valor do desconto: não teve desconto \n");
-        printf("Total a pagar: %i \n", resultado);
-      } else {
-        printf("Valor do produto: R$ %i \n", valor);
-        printf("Forma de pagamento: %i \n", opcao);
-        printf("Quantidade de pagamento: %i \n", parcela);
-        printf("Valor por parcela: %i \n", resultado);
-        printf("Total a pagar: %i \n", valor);
     }
 
   return 0;
