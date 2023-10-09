@@ -18,6 +18,11 @@ int main() {
        printf("%d \n", i);
     }
 
+    // para i de 10 ate 1 passo -1 faca
+      for (i = 1; i >= 10; i--) {
+       printf("%d \n", i);
+    }
+
     return 0;
 }
     
