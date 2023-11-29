@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+struct dados_pessoa {
+    char nome[200];
+    int idade;
+    char cpf[200];
+};
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+
+    struct dados_pessoa funcionario;
+    struct dados_pessoa cliente;
+
+    printf("\nSolicitando dados funcionário... \n");
+    printf("Digite o nome do usúario: \n");
+    gets(funcionario.nome);
+
+    printf("Digite a idade do idade: \n");
+    scanf("%d", &funcionario.idade);
+    fflush(stdin);
+
+    printf("Digite o CPF: \n");
+    gets(funcionario.cpf);
+
+    printf("\nSolicitando dados do cliente... \n");
+    printf("Digite o nome do usúario: \n");
+    gets(cliente.nome);
+
+    printf("Digite a idade do idade: \n");
+    scanf("%d", &cliente.idade);
+    fflush(stdin);
+
+    printf("Digite o CPF: \n");
+    gets(cliente.cpf);
+    
+    system("cls || clear");
+
+    printf("\nExibindo os dados do funcionário... \n");
+    printf("Nome do funcionário: %s \n", funcionario.nome);
+    printf("Idade do funcionário: %d \n", funcionario.idade);
+    printf("CPF do funcionário: %s \n", funcionario.cpf);
+
+    printf("\nExibindo os dados do cliente... \n");
+    printf("Nome do cliente: %s \n", cliente.nome);
+    printf("Idade do cliente: %d \n", cliente.idade);
+    printf("CPF do cliente: %s \n", cliente.cpf);
+
+    return 0;
+}
