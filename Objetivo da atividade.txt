@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+
+typedef struct {
+    char titulo[200];
+    char genero[200];
+    int quantidade;
+} Livro;
+
+void exibirMenu() {
+    printf("|-----------Opções do sistema-----------|\n");
+    printf("|codigo | alternativas                  |\n");
+    printf("|1      | Identificador de títulos      |\n");
+    printf("|2      | Acessar estoque               |\n");
+    printf("|3      | Alterar estoque               |\n");
+    printf("|4      | Sair do programa              |\n");
+    printf("|-------------Fim-----------------------|\n");
+}
+
+void cadastrarLivro(Livro *livros, int *numLivros) {
+    printf("\nCadastrar novo livro:\n");
+
+    while (getchar() != '\n');  // Limpa o buffer de entrada
+
+    printf("Título: ");
+    gets(livros[*numLivros].titulo);
+
+    printf("Gênero: ");
+    gets(livros[*numLivros].genero);
+
+    printf("Quantidade em estoque: ");
+    scanf("%d", &livros[*numLivros].quantidade);
+    (*numLivros)++;
+}
+
+void exibirEstoque(Livro *livros, int numLivros) {
+    printf("\nSituação do estoque:\n");
+    printf("No momento existem %d livros registrados:\n", numLivros);
+
+    for (int i = 0; i < numLivros; i++) {
+        printf("\nTítulo do livro: %s\n", livros[i].titulo);
+        printf("Gênero do livro: %s\n", livros[i].genero);
+        printf("Quantidade em estoque: %d\n", livros[i].quantidade);
+    }
+}
+
+void alterarEstoque(Livro *livros, int numLivros) {
+    char titulo[200];
+    int quantidade;
+
+    printf("\nDigite o título do livro que deseja alterar o estoque: ");
+    while (getchar() != '\n');  // Limpa o buffer de entrada
+    gets(titulo);
+
+    for (int i = 0; i < numLivros; i++) {
+        if (strcmp(titulo, livros[i].titulo) == 0) {
+            printf("Digite a nova quantidade em estoque: ");
+            scanf("%d", &quantidade);
+            livros[i].quantidade = quantidade;
+            printf("Estoque alterado com sucesso!\n");
+            return;
+        }
+    }
+
+    printf("Livro não encontrado!\n");
+}
+
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+    char loginSalvo[200] = "Lucas";
+    char senhaSalva[200] = "biblioteca123";
+    char login[200];
+    char senha[200];
+    int opcaoSistema;
+    Livro livros[100];
+    int numLivros = 0;
+
+    printf("\nBem-vindo ao sistema da Biblioteca Senai\n");
+    printf("Digite seu login de funcionário: ");
+    scanf("%s", login);
+
+    printf("Digite sua senha de funcionário - O SISTEMA SÓ PERMITE NÚMEROS: ");
+    scanf("%s", senha);
+
+    if (strcmp(login, loginSalvo) == 0 && strcmp(senha, senhaSalva) == 0) {
+        printf("\nBem-vindo, senhor Lucas, acesso ao sistema permitido\n");
+
+        do {
+            exibirMenu();
+            printf("Informe a opção desejada: ");
+            scanf("%d", &opcaoSistema);
+
+            switch (opcaoSistema) {
+                case 1:
+                    cadastrarLivro(livros, &numLivros);
+                    break;
+
+                case 2:
+                    exibirEstoque(livros, numLivros);
+                    break;
+
+                case 3:
+                    alterarEstoque(livros, numLivros);
+                    break;
+            }
+        } while (opcaoSistema != 4);
+    } else {
+        printf("Acesso negado!\n\n");
+    }
+
+    return 0;
+}
