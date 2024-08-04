@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+    int opcao;
+
+    printf(" código | Opções        | \n");
+
+    printf(" 1      | Novo Jogo     |  \n");
+
+    printf(" 2      | Carregar Jogo |  \n");
+
+    printf(" 3      | Configurações |  \n");
+
+    printf("\n-------------------------------\n");
+
+    printf("Digite o código da alternativa desejada: ");
+    scanf("%d", &opcao);
+
+    system("cls || clear");
+
+    switch (opcao) {
+    case 1 :
+       printf("Nova partida inicializando, por favor aguarde... \n");
+       break;
+
+    case 2 :
+      printf("Carregando partida, por favor aguarde... \n");
+       break;
+
+    case 3 :
+      printf("Carregando configurações... \n");
+       break;
+      
+    default:
+        printf("Opção invalida");
+        break;
+    }
+  
+  return 0;
+}

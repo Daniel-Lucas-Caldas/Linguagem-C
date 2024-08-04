@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+    int i, quantidadeNotas;
+    float nota, soma = 0, media;
+
+    printf("Digite a quantidade de notas: ");
+    scanf("%d", &quantidadeNotas);
+
+    for (i = 1; i <= quantidadeNotas; i++) {
+        printf("Digite a nota %d: ", i);
+        scanf("%f", &nota);
+        soma += nota;
+    }
+
+    media = soma / quantidadeNotas;
+    printf("A média das %d notas é: %.2f \n", quantidadeNotas, media);
+  
+  return 0;
+}

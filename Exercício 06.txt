@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+int main() {
+    setlocale(LC_ALL, "portuguese");
+    int opcao;
+
+  printf("\n-----------Opções--------------\n");
+
+    printf(" código | produto      | valor \n");
+
+    printf(" 1      | Camiseta     | 25,00 \n");
+
+    printf(" 2      | Calça        | 20,00 \n");
+
+    printf(" 3      | Sapato       | 80,00 \n");
+
+    printf("\n--------------Fim--------------\n");
+
+
+    printf("Digite o código do produto desejado: ");
+    scanf("%d", &opcao);
+
+    system("cls || clear");
+
+    switch (opcao) {
+    case 1 :
+       printf("Codigo: 01 \n");
+       printf("Produto: Camisa \n");
+       printf("Preço: R$25,00 \n");
+       break;
+
+    case 2 :
+      printf("Codigo: 02 \n");
+      printf("Produto: Calça \n");
+      printf("Preço: R$20,00 \n");
+       break;
+
+    case 3 :
+      printf("Codigo: 03 \n");
+      printf("Produto: Sapato \n");
+      printf("Preço: R$80,00 \n");
+       break;
+      
+    default:
+        printf("Opção invalida");
+        break;
+    }
+  
+  return 0;
+}

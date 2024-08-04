@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main(){
+    setlocale(LC_ALL,"portuguese");
+       int numero, pares = 0, impars = 0, quantidadeGeral = 0, somaGeral = 0, somaPares = 0; 
+       float mediaGeral = 0, mediaPar = 0;
+
+       do {
+          printf("Digite o %d número: ", quantidadeGeral + 1);
+          scanf("%d", &numero);
+
+          if (numero > 0) {
+             somaGeral += numero;
+             quantidadeGeral++;
+          }
+
+          if (numero%2 == 0) {
+                somaPares += numero;
+                pares++;
+            } else {
+                impars++;
+            }    
+       } while (numero != 0);
+
+  
+       mediaGeral = somaGeral / (float) quantidadeGeral;
+       mediaPar = somaPares / (float) pares; 
+
+       printf("Números pares: %d \n", pares);
+       printf("Números impars: %d \n", impars);
+       printf("Media dos valores pares: %.1f \n", mediaPar);
+       printf("Media geral dos números lidos: %.1f", mediaGeral);
+
+
+  return 0;
+}
