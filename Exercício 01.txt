@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main(){
+    setlocale(LC_ALL, "portuguese");
+    char nomes[5][200];
+    float idade[5];
+    float peso[5];
+    float altura[5];
+    float maioridade = 0, menoridade = 9999, maiorpeso = 0, menorpeso = 9999, maioraltura = 0, menoraltura = 999;
+    int indexmaxIdade, indexminIdade, indexmaxPeso, indexminPeso, indexmaxAltura, indexminAltura; 
+
+    int i;
+    
+    for (i = 0; i < 5; i++) {
+        fflush(stdin);
+         printf("%dª digite o seu nome: ", i + 1);
+         gets(nomes[i]);
+
+         printf("Digite sua idade: ");
+         scanf("%f", &idade[i]);
+
+         printf("Digite seu peso: ");
+         scanf("%f", &peso[i]);
+
+         printf("Digite sua altura: ");
+         scanf("%f", &altura[i]); 
+
+         // Maior e menor idade
+         maioridade = maioridade > idade[i] ? maioridade : idade[i];
+         menoridade = menoridade < idade[i] ? menoridade : idade[i];
+
+         // Maior e menor peso
+         maiorpeso = maiorpeso > peso[i] ? maiorpeso : peso[i];
+         menorpeso = menorpeso < peso[i] ? menorpeso : peso[i];
+
+         // Maior e menor altura
+         maioraltura = maioraltura > altura[i] ? maioraltura : altura[i];
+         menoraltura = menoraltura < altura[i] ? menoraltura : altura[i];
+        }
+
+       for (i = 0; i < 5; i++) {
+    	printf("\n\n\n");
+    	printf("nome: %s\n", nomes[i]);
+    	printf("idade: %.0f \n", idade[i]);
+    	printf("peso: %.2f \n", peso[i]);
+    	printf("altura: %.2f\n\n\n", altura[i]);
+        
+        // Operações do código 
+        indexmaxIdade = idade[i] == maioridade? i : 0;
+	indexminIdade = idade[i] == menoridade ? i : 0;  
+        indexmaxPeso = peso[i] == maiorpeso ? i : 0;
+	indexminPeso = peso[i] == menorpeso ? i : 0;  
+        indexmaxAltura = altura[i] == maioraltura ? i : 0;
+	indexminAltura = altura[i] == menoraltura ? i : 0;
+	}
+
+    printf("O nome e a altura da pessoa mais alta e a mais baixa");
+    printf("\n");
+    printf("Maior altura \n");
+    printf("Nome: %s\n", nomes[indexmaxAltura]);
+    printf("Altura: %.2f", altura[indexmaxAltura]);
+    
+    printf("\n");
+    printf("Menor altura: \n");
+    printf("Nome: %s \n", nomes[indexminAltura]);
+    printf("Altura: %.2f \n", altura[indexminAltura]);
+
+    printf("O nome e o peso da pessoa com maior peso e menor peso");
+    printf("\n");
+    printf("Maior peso: \n");
+    printf("Nome: %s \n", nomes[indexmaxPeso]);
+    printf("Peso: %.2f \n", peso[indexmaxPeso]);
+	
+    printf("\n");
+    printf("Menor peso: \n");
+    printf("Nome: %s \n", nomes[indexminPeso]);
+    printf("Peso: %.2f \n", peso[indexminPeso]);
+
+    printf("O nome a idade da pessoa com mais idade e com menos idade");
+    printf("\n");
+    printf("Maior idade: \n");
+    printf("Nome: %s \n", nomes[indexmaxIdade]);
+    printf("Idade: %.0f \n", idade[indexmaxIdade]);	
+
+    printf("\n");
+    printf("menor idade: \n");
+    printf("nome: %s \n", nomes[indexminIdade]);
+    printf("idade: %.0f \n", idade[indexminIdade]);
+  
+    return 0;
+}
